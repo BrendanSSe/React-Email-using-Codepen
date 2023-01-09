@@ -1,0 +1,333 @@
+$lightgrey : #8c8c8c;
+$whiteBG : rgba(255,255,255,0.95);
+
+$red: #FF6058;
+$yellow : #FFBD2E;
+$green: #29C941;
+
+
+body {
+    overflow: hidden;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+.pull-right {
+    float: right;
+}
+.white {
+    color: $whiteBG
+}
+
+#email-app {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+  .email-app__wrapper {
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
+  }
+  .row {
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 3px;
+  }
+}
+
+.background-overlay  {
+    background: url(https://i2.wp.com/9to5mac.files.wordpress.com/2014/08/yosemite.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: blur(3px); /* Safari 6.0 - 9.0 */
+    filter: blur(3px);
+    z-index: -1;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.topbar {
+  background: rgba(0,0,0,0.75);
+  input {
+    border-radius: 3px;
+    border: 1px solid #333;
+    padding: 0 10px;
+  }
+  ul {
+     list-style: none;
+     margin: 0;
+     padding: 15px 0;
+      li {
+         display: inline-block;
+         cursor: pointer;
+         color: $whiteBG;
+         padding: 0 10px;
+      }
+    li:nth-child(2) {
+        padding-left: 60px;
+    }
+  }
+  li.close-icons span:first-child {
+    &:before {
+      width: 12px;
+      height: 12px;
+      content: "";
+      background: $red;
+      position: absolute;
+      top: 20px;
+      border-radius: 12px;
+      left: 10px;
+    }
+  }
+  li.close-icons span:last-child {
+    &:before {
+      width: 12px;
+      height: 12px;
+      content: "";
+      background: $green;
+      position: absolute;
+      top: 20px;
+      border-radius: 12px;
+      left: 50px;
+    }
+  }
+  li.close-icons span:nth-child(2) {
+    &:before {
+      width: 12px;
+      height: 12px;
+      content: "";
+      background: $yellow;
+      position: absolute;
+      top: 20px;
+      border-radius: 12px;
+      left: 30px;
+    }
+  }
+}
+.email-list__wrapper {
+    height: 100%;
+    padding: 0;
+    display: block;
+    overflow-y: scroll;
+    position: relative;
+    max-height: 100%;
+    overflow-y: auto;
+    height: 500px;
+    background: $whiteBG;
+    box-shadow: -10px 0px 30px 4px rgba(0,0,0,0.25);
+    z-index: 1;
+}
+.email-details__wrapper {
+    background: $whiteBG;
+    .email-details__container {
+        padding: 30px 20px 20px;
+    }
+  .email-details__info {
+      margin-bottom: 5px;
+    span {
+       color: $lightgrey;
+       font-size: 0.9rem;
+       transistion: 0.3s;
+        
+    }
+  }
+  .email-details__header {
+      padding-bottom: 10px;
+      margin-bottom: 50px;
+      position: relative;
+      &:before {
+      content: "";
+      width: calc(100% - 150px);
+      height: 1px;
+      background: #d2d2d2;
+      left: 0;
+      bottom: -5px;
+      position: absolute;
+      }
+  }
+  .email-details__message {
+      p {
+        color: $lightgrey;
+      }
+  }
+  .email-details__buttons {
+    position: absolute;
+    right: -5px;
+    bottom: -20px;
+  }
+  .email-details__mark {
+    float: left;
+    position: relative;
+    display: inline-block;
+    padding: 0 5px;
+    span {
+        width: 35px;
+        cursor: pointer;
+        height: 35px;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        border: 1px solid $lightgrey;
+        border-radius: 100%;
+        padding-top: 1px;
+        font-size: 20px;
+        color: $lightgrey;
+        transition: 0.3s;
+        &:hover {
+            background: $lightgrey;
+            color: #fff;
+        }
+    }
+  }
+    
+}
+
+.email-item {
+    position: relative;
+    padding: 12px 30px 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover, &.active {
+      background: #fafafa;
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        width: calc(100% - 60px);
+        height: 1px;
+        bottom: 0px;
+        background: #eee
+    }
+    .email-item__read[data-read="false"]:before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background: $red;
+        position: absolute;
+        left: 10px;
+        top: 18px;
+     }
+    .email-item__time {
+        position: absolute;
+        right: 30px;
+        top: 15px;
+        color: $lightgrey;
+        font-size: 0.9rem
+    }
+    .email-item__subject {
+        display: inline-block;
+        margin-bottom: 3px;
+    }
+    .email-item__name {
+        color: $lightgrey;
+    }
+    .email-item__message {
+      p {
+          margin-bottom: 0;
+          font-size: 0.9rem;
+          color: $lightgrey
+      }
+    }
+}
+
+.empty-container {
+    display: flex;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: $lightgrey;
+    div {
+       text-transform: uppercase;
+    }
+}
+
+.compose-email__wrapper {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    .compose-email__content {
+        display: flex;
+        height: 100%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 100px 0 70px;
+    }
+    .compose-email__message {
+        width: 100%;
+        max-width: 570px;
+        // height: calc(100vh - 400px);
+        justify-content: center;
+        align-items: center;
+        background: #eee;
+        border-radius: 5px;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.25);
+    }
+    .compose-email__header {
+        background: rgba(0, 0, 0, 0.75);
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        color: #fff;
+        text-align: left;
+        span {
+            cursor: pointer;
+        }
+    }
+    .compose-email__message {
+        textarea, input {
+          width: 100%;
+          border: none;
+          padding: 10px;
+          border-bottom: 1px solid $lightgrey;
+      }
+    }
+    .compose-email__footer {
+        padding: 10px 10px 15px;
+        text-align: left;
+      
+      button {
+        border: none;
+        padding: 5px 25px;
+        background: #039be5;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+            background: #01579b;
+        }
+      }
+    }
+}
+
+.footer {
+    background: $whiteBG;
+    padding: 10px;
+    color: $lightgrey;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 3;
+    border-radius: 0 0 5px 5px;
+    border-top: 1px solid #e0e0e0;
+}
